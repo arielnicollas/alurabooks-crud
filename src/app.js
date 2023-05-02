@@ -34,6 +34,13 @@ app.put('/livros/:id', (req,res) => {
     res.json(livros)
 })
 
+app.delete('/livros/:id', (req,res) => {
+    let {id} = req.params;
+    let index = buscaLivro(id);
+    livros.splice(index, 1)
+    res.send(`Livro ${id} removido com sucesso`)
+})
+
 
 function buscaLivro(id) {
     //Metodo findeIndex() -> Pra cada elemento do array vai retornar o id do array livro com base no id que for inserido no parametro
